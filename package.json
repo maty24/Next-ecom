@@ -9,14 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "18.16.3",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.4.1",
+    "@mui/material": "^5.4.1",
+    "@mui/x-data-grid": "^5.5.1",
+    "@types/node": "18.16.2",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
+    "mongoose": "^6.2.1",
     "eslint": "8.39.0",
-    "eslint-config-next": "13.3.2",
-    "next": "13.3.2",
+    "eslint-config-next": "13.3.1",
+    "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-slideshow-image": "^4.2.1",
     "typescript": "5.0.4"
   }
 }
