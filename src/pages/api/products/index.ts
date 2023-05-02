@@ -9,7 +9,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-
   //evalua el metodo de la peticion
   switch (req.method) {
     case "GET":
@@ -26,7 +25,8 @@ const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const { gender = "all" } = req.query;
 
   let condition = {};
-//si el genero es diferente a all y el genero es valido retorna el genero
+  //si el genero es diferente a all y el genero es valido retorna el genero
+
   if (gender !== "all" && SHOP_CONSTANTS.validGenders.includes(`${gender}`)) {
     condition = { gender };
   }

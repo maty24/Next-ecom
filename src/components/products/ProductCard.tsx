@@ -11,12 +11,13 @@ interface Props {
 export const ProductCard: FC<Props> = ({ product }) => {
 
     const [isHovered, setIsHovered] = useState(false);
+    const [isImageLoaded, setisImageLoaded] = useState(false)
 
     //esto es para que cuando se haga hover en la imagen, cambie a la segunda imagen
     const productImage = useMemo(() => {
         return isHovered
-            ? `products/${product.images[1]}`
-            : `products/${product.images[0]}`;
+            ? `/products/${product.images[1]}`
+            : `/products/${product.images[0]}`;
 
     }, [isHovered, product.images])
     //el onmouseEnter y onmouseLeave son para que cuando se haga hover en la imagen, cambie a la segunda imagen
@@ -28,7 +29,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
             onMouseLeave={() => setIsHovered(false)}
         >
             <Card>
-                <NextLink href="/product/slug" passHref prefetch={false} legacyBehavior>
+                <NextLink href={`/product/${product.slug}`} passHref prefetch={false} legacyBehavior>
                     <Link>
                         <CardActionArea>
                             <CardMedia
@@ -36,6 +37,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
                                 className='fadeIn'
                                 image={productImage}
                                 alt={product.title}
+                                onLoad={() => setisImageLoaded(true) /*esto es para que cuando se cargue la imagen, se haga un fade in*/}
                             />
 
                         </CardActionArea>
@@ -44,7 +46,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
             </Card>
 
-            <Box sx={{ mt: 1 }} className='fadeIn'>
+            <Box sx={{ mt: 1, display: isImageLoaded ? 'block' : 'none' }} className='fadeIn'>
                 <Typography fontWeight={700}>{product.title}</Typography>
                 <Typography fontWeight={500}>{`$${product.price}`}</Typography>
             </Box>
